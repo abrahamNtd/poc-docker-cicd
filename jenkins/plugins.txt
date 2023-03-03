@@ -20,3 +20,11 @@ ws-cleanup:latest
 job-dsl:latest
 blueocean:latest
 authorize-project:latest
+dockerhub-notification
+docker-compose-build-step
+docker-build-publish
+docker-build-step
+docker-java-api
+docker-plugin
+docker-workflow
+docker-slaves

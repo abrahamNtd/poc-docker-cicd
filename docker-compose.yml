@@ -1,16 +1,27 @@
 version: "3.7"
 services:
-  local_jenkins:
+  local-jenkins:
     container_name: local-jenkins
-    image: jenkins-jcasc:latest
+    image: abraham_ntd/jenkins-jcasc:latest
     build:
       context: ./jenkins
       dockerfile: Dockerfile
+    privileged: true
     environment:
       JENKINS_ADMIN_ID: admin
       JENKINS_ADMIN_PASSWORD: admin
     ports:
-      - 8083:8080
+      - 8080:8080
+      - 50000:50000
+  local-jenkins-agent:
+    image: jenkins/ssh-agent:jdk11
+    privileged: true
+    user: root
+    container_name: local-jenkins-agent
+    expose:
+      - 22
+    environment:
+      - JENKINS_AGENT_SSH_PUBKEY=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDUPpHm9IxKkU/vToghhLBXqcFWMnQQya7vpVLmpirM8iXlZgmskq1oRHRy6lK0JXdAG+xfMCUhPJe+XgU3isBykQdHaUYABWY02GjjjafJD2mdIC8ASjXAZycjUlm/3pGNtsCTfFqUfpNnEdutmjsA8tzrDNglcpaXx9Ie0qi02vbvwDr/DKA4siXfx9530xUg/mHjqIpg9mZid01bGfbC9/rHq1VKbfj102OoZ850MFYea9aNSaMZqhTUn7H6ooP5kMhiSIGLL7hHHEXUM+xmt36XbziS6IgfMODqUnaryFUyxllzp//nls6aSZgDKNYk9StBVy3dVz/3zJRvbHvuUgStfgqVMgmxHVAi6/+me0X0xG3stcHUPdUQy7BhpX/pGxNA95oYVZHM67rlMpqrqimrq1BCwSTx+53tOeUBthx6xFl7j4oj14kVgPtDEz2jTlS+/dgwApp6mAAvGtccLNzAc30Isb0pOs+yPpxdVDsIits5C/J6t8Iwm57jj4E=
   local-sonar:
     container_name: local-sonar
     image: sonarqube:8.9.7-community

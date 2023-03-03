@@ -1,7 +1,6 @@
-pipelineJob('example') {
+pipelineJob('Basic_Pipeline') {
   def repo = 'https://github.com/abrahamNtd/poc-java-spring-boot-rest.git' 
-  def sshRepo = 'https://github.com/abrahamNtd/poc-java-spring-boot-rest.git' 
-  description("Your App Pipeline") 
+  description("Jenkins Pipeline for building and testing a rest  service") 
   keepDependencies(false) 
   properties{
     githubProjectUrl (repo) 
@@ -10,7 +9,7 @@ pipelineJob('example') {
     cpsScm {
       scm {
         git {
-          remote { url(sshRepo) } 
+          remote { url(repo) } 
           branches('feature/docker') 
           scriptPath('ci/Jenkinsfile') 
           extensions { }
