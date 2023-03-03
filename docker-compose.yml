@@ -1,0 +1,54 @@
+version: "3.7"
+services:
+  local_jenkins:
+    container_name: local-jenkins
+    image: jenkins-jcasc:latest
+    build:
+      context: ./jenkins
+      dockerfile: Dockerfile
+    environment:
+      JENKINS_ADMIN_ID: admin
+      JENKINS_ADMIN_PASSWORD: admin
+    ports:
+      - 8083:8080
+  local-sonar:
+    container_name: local-sonar
+    image: sonarqube:8.9.7-community
+    depends_on:
+      - local-db
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://local-db:5432/sonar
+      SONAR_JDBC_USERNAME: sonar
+      SONAR_JDBC_PASSWORD: sonar
+    volumes:
+      - type: bind
+        source: ./volumes/sonarqube/data
+        target: /opt/sonarqube/data
+      - type: bind
+        source: ./volumes/sonarqube/extensions
+        target: /opt/sonarqube/extensions
+      - type: bind
+        source: ./volumes/sonarqube/logs
+        target: /opt/sonarqube/logs
+    ports:
+      - "8084:9000"
+  init:
+      image: bash
+      privileged: true
+      user: root
+      volumes:
+        - ./sonar/init.sh:/mnt/init.sh
+      command: ["sh", "-e", "/mnt/init.sh"]
+  local-db:
+    container_name: local-db
+    image: postgres:12
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonar
+    volumes:
+      - type: bind
+        source: ./volumes/postgresql/conf
+        target: /var/lib/postgresql
+      - type: bind
+        source: ./volumes/postgresql/data
+        target: /var/lib/postgresql/data 

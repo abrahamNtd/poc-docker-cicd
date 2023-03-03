@@ -1,0 +1,49 @@
+mkdir -p ./volumes/sonarqube/data
+mkdir -p ./volumes/sonarqube/extensions
+mkdir -p ./volumes/sonarqube/logs
+mkdir -p ./volumes/postgresql/conf
+mkdir -p ./volumes/postgresql/data
+mkdir -p ./volumes/jenkins/jenkins_home
+
+
+
+  local-sonar:
+    container_name: local-sonar
+    image: sonarqube:8.9.7-community
+    depends_on:
+      - local-db
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://local-db:5432/sonar
+      SONAR_JDBC_USERNAME: sonar
+      SONAR_JDBC_PASSWORD: sonar
+    volumes:
+      - type: bind
+        source: ./volumes/sonarqube/data
+        target: /opt/sonarqube/data
+      - type: bind
+        source: ./volumes/sonarqube/extensions
+        target: /opt/sonarqube/extensions
+      - type: bind
+        source: ./volumes/sonarqube/logs
+        target: /opt/sonarqube/logs
+    ports:
+      - "9000:9000"
+  init:
+      image: bash
+      privileged: true
+      user: root
+      volumes:
+        - ./sonar/init.sh:/mnt/init.sh
+      command: ["sh", "-e", "/mnt/init.sh"]
+  local-db:
+    image: postgres:12
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonar
+    volumes:
+      - type: bind
+        source: ./volumes/postgresql/conf
+        target: /var/lib/postgresql
+      - type: bind
+        source: ./volumes/postgresql/data
+        target: /var/lib/postgresql/data 
