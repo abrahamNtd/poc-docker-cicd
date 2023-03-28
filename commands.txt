@@ -4,3 +4,46 @@ mkdir -p ./volumes/sonarqube/logs
 mkdir -p ./volumes/postgresql/conf
 mkdir -p ./volumes/postgresql/data
 mkdir -p ./volumes/jenkins/jenkins_home
+mkdir -p ./volumes/prometheus
+mkdir -p ./volumes/prometheus/prometheus-data
+mkdir -p ./volumes/grafana/provisioning/datasources
+
+docker build -f api/Dockerfile  -t abraham_ntd/local-rest-api:latest . 
+
+docker run -p 9091:22 abraham_ntd/local-rest-api:latest 
+
+ssh sshuser@localhost -p 9091 -i ssh/id_rsa
+
+scp -i ssh/id_rsa -P 9091 temp/app.war sshuser@localhost:/usr/local/tomcat/webapps/app.war
+
+docker build -f web/Dockerfile  -t abraham_ntd/local-website:latest .
+
+docker run -d -p 9092:22 -p 8082:80 abraham_ntd/local-website:latest
+
+ssh sshuser@localhost -p 9092 -i ssh/id_rsa
+
+ls -lt /usr/share/nginx/html/
+
+prom/prometheus:v2.30.3
+
+http://localhost:8086/-/reload
+
+up{instance='idonotexists:564',job="local-services"}
+up{instance='local-prometheus:9090',job="local-services"}
+
+
+user admin with password admin
+
+docker build -f postgres/Dockerfile  -t abraham_ntd/local-db:latest .
+
+docker run -p 5432 -v ./volumes/sonarqube/data:/opt/sonarqube/data abraham_ntd/local-db:latest .
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 jenkins:
-  systemMessage: "Automating Jenkins Setup using Docker and Jenkins Configuration as Code\n\n"
+  systemMessage: "Jenkins Server using Docker and Jenkins Configuration as Code\n\n"
   remotingSecurity:
    enabled: true
   securityRealm:
