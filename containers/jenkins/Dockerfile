@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.375.3
+FROM jenkins/jenkins:jdk17
 LABEL maintainer="agmc22mx@gmail.com"
 LABEL description="jenkins"
 LABEL version="1.0"

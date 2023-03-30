@@ -1,5 +1,5 @@
-pipelineJob('Basic_Pipeline') {
-  def repo = 'https://github.com/abrahamNtd/poc-java-spring-boot-rest.git' 
+pipelineJob('backend_pipeline') {
+  def repo = 'https://github.com/abrahamNtd/poc-docker-cicd.git' 
   description("Jenkins Pipeline for building and testing a rest  service") 
   keepDependencies(false) 
   properties{
@@ -9,8 +9,8 @@ pipelineJob('Basic_Pipeline') {
     cpsScm {
       scm {
         git {
-          remote { url(repo) } 
-          branches('feature/docker') 
+          remote { url('https://github.com/abrahamNtd/poc-docker-cicd.git') } 
+          branches('origin/feature/basic-setup') 
           scriptPath('ci/Jenkinsfile') 
           extensions { }
         } 

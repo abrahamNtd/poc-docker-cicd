@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        node{
-            label 'jdk-11'
-        }
-    }
+    agent any
     stages {
         stage('Checkout') {
             steps {
@@ -51,33 +47,5 @@ pipeline {
         }
     }
 }
-
-pipeline {
-    agent any
-
-    stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
-                git branch: 'feature/basic-setup', changelog: false, poll: false, url: 'https://github.com/abrahamNtd/poc-docker-cicd.git'
-                sh 'ls -lt'
-                sh 'ls -lta /home/jenkins/.ssh/'
-                sh 'scp -i ssh/id_rsa -P 9090 code/api/app/build/libs/app.jar sshuser@localhost:/home/sshuser/app.jar'
-                sh 'ssh sshuser@localhost -p 9000 -i ssh/id_rsa ./start.sh app.jar'
-                sh 'ssh sshuser@localhost -p 9000 -i ssh/id_rsa ./stop.sh'
-                sh 'gradle clean build'
-            }
-        }
-    }
-}
-
-
-
-Victor Hugo Torres Morales9:22 AM
-https://globant.atlassian.net/jira/software/c/projects/GLO220/boards/675?selectedIssue=GLO220-438
-Victor Hugo Torres Morales9:23 AM
-https://github.com/GLO491/task_force_bi/actions/runs/4557791886/jobs/8039882574
-
-
 
 
