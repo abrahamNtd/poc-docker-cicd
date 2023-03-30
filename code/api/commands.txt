@@ -1,0 +1,12 @@
+./gradlew clean test build
+./gradlew clean test war
+./gradlew bootrun
+./gradlew bootWar
+docker build -t abrahamntd/restapi:latest .
+docker run -name restapi -p 8080:8080 -p 9000:9000 abrahamntd/restapi:latest
+
+http://localhost:8080/hi
+http://localhost:8081/actuator/health
+http://localhost:8081/actuator/info
+http://localhost:8081/actuator/metrics
+http://localhost:8081/prometheus
