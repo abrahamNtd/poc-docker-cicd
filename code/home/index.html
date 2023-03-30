@@ -54,6 +54,12 @@
     .tool:hover {
       border-color: #f1f1f1;
     }
+    footer  {
+      background-color: #003399;
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
   </style>
 </head>
 <body>
@@ -66,7 +72,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">CI/CD</a>
+      <a class="navbar-brand" href="#about">CI/CD</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -92,7 +98,7 @@
 		<div class="col-sm-4">
 			<p><strong>CI/CD Server</strong></p><br>
       <p>
-        <a href="http://localhost:8083/" target="_blank">
+        <a href="http://localhost:8081/" target="_blank">
           <img src="img/jenkins.png" class="img-circle tool" alt="Jenkins">
         </a>
       </p>
@@ -101,13 +107,13 @@
       </a>
       <div id="ci_cd_01" class="collapse">
         <p>Jenkins server</p>
-        <p>"http://localhost:8083/"</p>
+        <p>"http://localhost:8081/"</p>
       </div>
 		</div>
 		<div class="col-sm-4">
 			<p><strong>Static Code Analisys</strong></p><br>
       <p>
-        <a href="http://localhost:8084/" target="_blank">
+        <a href="http://localhost:8082/" target="_blank">
           <img src="img/sonar.png" class="tool" alt="SonarQube">
         </a>
       </p>
@@ -116,20 +122,20 @@
       </a>
       <div id="ci_cd_02" class="collapse">
         <p>SonarQube</p>
-        <p>"http://localhost:8084/"</p>
+        <p>"http://localhost:8082/"</p>
       </div>
 		</div>
 		<div class="col-sm-4">
 			<p><strong>Contarcts</strong></p><br>
       <p>
-        <a href="http://localhost:8085/" target="_blank">
+        <a href="http://localhost:8083/" target="_blank">
           <img src="img/pactbroker.png" class="tool" alt="Pact Broker"></a></p>
 			<a href="#ci_cd_03" data-toggle="collapse">
         Details
       </a>
       <div id="ci_cd_03" class="collapse">
         <p>Pact Broker</p>
-        <p>"http://localhost:8085/"</p>
+        <p>"http://localhost:8083/"</p>
       </div>
 		</div>
 	</div>
@@ -142,7 +148,7 @@
 		<div class="col-sm-4">
 			<p><strong>Monitoring</strong></p><br>
       <p>
-        <a href="http://localhost:8086/" target="_blank">
+        <a href="http://localhost:8084/" target="_blank">
           <img src="img/prometheus.png" class="img-circle tool" alt="Prometheus">
         </a>
       </p>
@@ -151,13 +157,13 @@
       </a>
       <div id="monitoring_01" class="collapse">
         <p>Prometheus</p>
-        <p>"http://localhost:8086/"</p>
+        <p>"http://localhost:8084/"</p>
       </div>
 		</div>
 		<div class="col-sm-4">
 			<p><strong>Alerting Manager</strong></p><br>
       <p>
-        <a href="http://localhost:8087/" target="_blank">
+        <a href="http://localhost:8085/" target="_blank">
           <img src="img/alertmanager.png" class="img-circle tool" alt="Alertmanager">
         </a>
       </p>
@@ -166,13 +172,13 @@
       </a>
       <div id="monitoring_02" class="collapse">
         <p>Alertmanager</p>
-        <p>"http://localhost:8087/"</p>
+        <p>"http://localhost:8085/"</p>
       </div>
 		</div>
 		<div class="col-sm-4">
 			<p><strong>Dashboards</strong></p><br>
       <p>
-        <a href="http://localhost:8088/" target="_blank">
+        <a href="http://localhost:8086/dashboards" target="_blank">
           <img src="img/grafana.png" class="img-circle tool" alt="Grafana">
         </a>
       </p>
@@ -181,7 +187,7 @@
       </a>
       <div id="monitoring_03" class="collapse">
         <p>Grafana</p>
-        <p>"http://localhost:8088/"</p>
+        <p>"http://localhost:8086/dashboards"</p>
       </div>
 		</div>
 	</div>
@@ -194,7 +200,7 @@
 		<div class="col-sm-4">
 			<p><strong>Backend</strong></p><br>
       <p>
-        <a href="http://localhost:8081/" target="_blank">
+        <a href="http://localhost:8080/api/" target="_blank">
           <img src="img/tomcat.png" class="tool" alt="Tomcat 9 Server">
         </a>
       </p>
@@ -204,13 +210,29 @@
       <div id="server_01" class="collapse">
         <p>Tomcat 9 Server</p>
         <p>Rest Api</p>
-        <p>http://localhost:8081/</p>
+        <p>http://localhost:8080/api/</p>
       </div>
 		</div>
+    <div class="col-sm-4">
+      <p><strong>Backend status</strong></p><br>
+      <p>
+        <a href="http://localhost:8080/api_status/" target="_blank">
+          <img src="img/tomcat.png" class="tool" alt="Tomcat 9 Server">
+        </a>
+      </p>
+      <a href="#server_01" data-toggle="collapse">
+        Details
+      </a>
+      <div id="server_01" class="collapse">
+        <p>Tomcat 9 Server</p>
+        <p>Rest Api</p>
+        <p>http://localhost:8080/api_status/</p>
+      </div>
+    </div>
 		<div class="col-sm-4">
 			<p><strong>Forntend</strong></p><br>
       <p>
-        <a href="http://localhost:8082/" target="_blank">
+        <a href="http://localhost:8080/web/" target="_blank">
           <img src="img/nginx.png" class="img-circle tool" alt="Nginext Server">
         </a>
       </p>
@@ -220,10 +242,16 @@
       <div id="server_02" class="collapse">
         <p>Nginx Server</p>
         <p>Single Page Aplication</p>
-        "http://localhost:8082/"
+        "http://localhost:8080/web/"
       </div>
 		</div>
 	</div>
 </div>
+<footer class="container-fluid text-center">
+  <a href="#about" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>Local CI/CD environment</a></p>
+</footer>
 </body>
 </html>

@@ -1,0 +1,5 @@
+FROM prom/alertmanager:v0.23.0
+LABEL maintainer="agmc22mx@gmail.com"
+LABEL description="Alert manager server"
+LABEL version="1.0"
+
