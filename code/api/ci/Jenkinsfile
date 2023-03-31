@@ -63,7 +63,7 @@ pipeline {
                     try{
                         echo "TimeStamp: ${currentBuild.startTimeInMillis}"
                         println new Date().format("yyyyMMdd.HHmm", TimeZone.getTimeZone('UTC'))
-                        def report_name = now.format("yyyyMMdd.HHmm", TimeZone.getTimeZone('UTC') + '.html'
+                        def report_name = new Date().format("yyyyMMdd.HHmm", TimeZone.getTimeZone('UTC')) + '.html'
                         def dest = "/usr/share/nginx/html/reports/" + report_name
                         def origin = "Functional_Test_Report.html"
                         echo "dest: ${dest}"
