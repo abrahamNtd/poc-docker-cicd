@@ -12,7 +12,7 @@ import static io.restassured.RestAssured.given;
 
 public class TestBasic {
 
-    String baseUri = "http://local-server:8080/api";
+    String baseUri = "http://local-server:8080";
 
     @Test(groups = {"smokeTest"})
     public void say_hi_for_a_given_name() {

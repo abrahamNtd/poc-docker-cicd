@@ -62,9 +62,14 @@ pipeline {
                 script {
                     try{
                         echo "TimeStamp: ${currentBuild.startTimeInMillis}"
-                        def now = new Date()
-                        println now.format("yyMMdd.HHmm", TimeZone.getTimeZone('UTC'))
-                        sh 'scp -i /home/jenkins/.ssh/id_rsa -P 22 Functional_Test_Report.html sshuser@local-server:/usr/share/nginx/html/reports/Functional_Test_Report.html'
+                        println new Date().format("yyyyMMdd.HHmm", TimeZone.getTimeZone('UTC'))
+                        def report_name = now.format("yyyyMMdd.HHmm", TimeZone.getTimeZone('UTC') + '.html'
+                        def dest = "/usr/share/nginx/html/reports/" + report_name
+                        def origin = "Functional_Test_Report.html"
+                        echo "dest: ${dest}"
+                        echo "origin ${origin}"
+                        echo "Report http://localhost:8080/reports/${report_name}"
+                        sh "scp -i /home/jenkins/.ssh/id_rsa -P 22 ${origin} sshuser@local-server:${dest}"
                     }catch (Exception e) {
                         System.out.println("Something went wrong. ");
                     }

@@ -17,6 +17,7 @@ RUN echo 'sshuser:pass' | chpasswd
 
 RUN mkdir /home/sshuser/.ssh
 RUN mkdir /usr/share/nginx/html/web
+RUN mkdir /usr/share/nginx/html/reports
 
 COPY ssh/id_rsa.pub /home/sshuser/.ssh/authorized_keys
 COPY ssh/config /home/sshuser/.ssh/config
