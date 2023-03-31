@@ -48,7 +48,9 @@ pipeline {
         stage('Functional Test') {
             steps {
                 echo 'Functional Test ....'
-                
+                dir('code/api_test') {
+                    sh './gradlew clean test'
+                }
             }
         }
     }

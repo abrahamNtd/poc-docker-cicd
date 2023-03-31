@@ -12,12 +12,10 @@ import static io.restassured.RestAssured.given;
 
 public class TestBasic {
 
-    String baseUri = "http://localhost:8080/api";
+    String baseUri = "http://local-server:8080/api";
 
     @Test(groups = {"smokeTest"})
     public void say_hi_for_a_given_name() {
-
-        System.out.println("The Url is: " );
 
         ExtentTestManager.getTest()
             .given("")
