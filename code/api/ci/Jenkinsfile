@@ -36,11 +36,11 @@ pipeline {
                 echo 'Deploying ....'
                 dir('code/api/app/build/libs') {
                     sh 'ls -lt'
-                    sh 'Stoping server ....'
+                    echo 'Stoping server ....'
                     sh 'ssh sshuser@local-server -p 22 -i /home/jenkins/.ssh/id_rsa ./stop.sh'
-                    sh 'Copying jar file ....'
+                    echo 'Copying jar file ....'
                     sh 'scp -i /home/jenkins/.ssh/id_rsa -P 22 app.jar sshuser@local-server:/home/sshuser/app.jar'
-                    sh 'Starting jar server ....'
+                    echo 'Starting jar server ....'
                     sh 'ssh sshuser@local-server -p 22 -i /home/jenkins/.ssh/id_rsa ./start.sh'
                 }
             }
