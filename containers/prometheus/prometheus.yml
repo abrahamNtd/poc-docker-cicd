@@ -17,4 +17,4 @@ alerting:
   alertmanagers:
     - scheme: http
       static_configs:
-        - targets: [ 'local-alertmanager:8087' ] 
+        - targets: [ 'local-alertmanager:80' ] 
