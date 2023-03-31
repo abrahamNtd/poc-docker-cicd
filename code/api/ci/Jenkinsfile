@@ -41,7 +41,7 @@ pipeline {
                     echo 'Copying jar file ....'
                     sh 'scp -i /home/jenkins/.ssh/id_rsa -P 22 app.jar sshuser@local-server:/home/sshuser/app.jar'
                     echo 'Starting jar server ....'
-                    sh 'ssh sshuser@local-server -p 22 -i /home/jenkins/.ssh/id_rsa ./start.sh'
+                    sh 'ssh sshuser@local-server -p 22 -i /home/jenkins/.ssh/id_rsa ./start.sh app.jar'
                 }
             }
         }
