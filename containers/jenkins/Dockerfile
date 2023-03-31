@@ -25,6 +25,9 @@ RUN pip3 install GitPython
 RUN pip3 install pyyaml
 
 RUN mkdir -p /home/jenkins/.ssh
+COPY ssh/id_rsa /var/jenkins_home/.ssh/id_rsa
+COPY ssh/id_rsa.pub /var/jenkins_home/.ssh/id_rsa.pub
+COPY ssh/config /var/jenkins_home/.ssh/config
 COPY ssh/id_rsa /home/jenkins/.ssh/id_rsa
 COPY ssh/id_rsa.pub /home/jenkins/.ssh/authorized_keys
 COPY ssh/config /home/jenkins/.ssh/config
