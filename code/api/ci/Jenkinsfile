@@ -51,6 +51,24 @@ pipeline {
                 dir('code/api_test') {
                     sh './gradlew clean test'
                 }
+                
+            }
+        }
+    }
+    post { 
+        always { 
+            try{
+                echo 'Publishing Test Reports ....'
+                dir('code/api_test/build/reports/TestReport') {
+                    echo "TimeStamp: ${currentBuild.startTimeInMillis}"
+                    script {
+                        def now = new Date()
+                        println now.format("yyMMdd.HHmm", TimeZone.getTimeZone('UTC'))
+                    }
+                    sh 'scp -i /home/jenkins/.ssh/id_rsa -P 22 Functional_Test_Report.html sshuser@local-server:/usr/share/nginx/html/reports/Functional_Test_Report.html'
+                }
+            }catch (Exception e) {
+                System.out.println("Something went wrong. ");
             }
         }
     }
