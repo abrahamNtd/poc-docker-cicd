@@ -46,8 +46,8 @@ sonar {
         property 'sonar.host.url', 'http://local-sonar:9000' 
         property "sonar.login", "admin"
         property "sonar.password", "ADMIN"
-        property "sonar.projectKey", "poc-java-springboot"
-        property 'sonar.projectName', 'poc-java-springboot'
+        property "sonar.projectKey", "rest-api"
+        property 'sonar.projectName', 'rest-api'
         property 'sonar.java.source', 17
         property "sonar.sources", "src/main"
     }
