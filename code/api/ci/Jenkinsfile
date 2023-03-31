@@ -20,7 +20,6 @@ pipeline {
                 dir('code/api') {
                     sh './gradlew sonar'
                 }
-                
             }
         }
         stage('Build') {
@@ -50,8 +49,7 @@ pipeline {
                 echo 'Functional Test ....'
                 dir('code/api_test') {
                     sh './gradlew clean test'
-                }
-                
+                }   
             }
         }
     }
@@ -61,22 +59,17 @@ pipeline {
             dir('code/api_test/build/reports/TestReport') {
                 script {
                     try{
-                        echo "TimeStamp: ${currentBuild.startTimeInMillis}"
-                        println new Date().format("yyyyMMdd.HHmm", TimeZone.getTimeZone('UTC'))
                         def report_name = new Date().format("yyyyMMdd.HHmm", TimeZone.getTimeZone('UTC')) + '.html'
                         def dest = "/usr/share/nginx/html/reports/" + report_name
                         def origin = "Functional_Test_Report.html"
-                        echo "dest: ${dest}"
-                        echo "origin ${origin}"
-                        echo "Report http://localhost:8080/reports/${report_name}"
                         sh "scp -i /home/jenkins/.ssh/id_rsa -P 22 ${origin} sshuser@local-server:${dest}"
+                        echo "Report http://localhost:8080/reports/${report_name}"
                     }catch (Exception e) {
                         System.out.println("Something went wrong. ");
                     }
                 }
                     
             }
-            
         }
     }
 }
