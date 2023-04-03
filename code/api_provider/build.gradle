@@ -8,10 +8,9 @@ plugins {
     id "au.com.dius.pact" version "4.3.6"
 }
 
-group = 'mx.abrahamNtd.poc.rest'
-//version = '0.0.1-SNAPSHOT'
+group = 'mx.abrahamNtd.poc.api.provider'
 sourceCompatibility = '17'
-mainClassName="mx.abrahamNtd.poc.rest.App"
+mainClassName="mx.abrahamNtd.poc.provider.App"
 
 repositories {
     mavenCentral()
@@ -19,7 +18,8 @@ repositories {
 
 dependencies {
     runtimeOnly 'io.micrometer:micrometer-registry-prometheus:1.9.0'
-    implementation 'com.squareup.retrofit2:converter-jackson:2.9.0'
+    implementation 'org.postgresql:postgresql:42.1.4'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:1.5.6.RELEASE'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'
@@ -27,8 +27,6 @@ dependencies {
     testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testImplementation 'au.com.dius.pact:consumer:4.4.2'
-    testImplementation 'au.com.dius.pact:provider:4.4.2'
 }
 
 test {
@@ -50,8 +48,8 @@ sonar {
         property 'sonar.host.url', 'http://local-sonar:9000' 
         property "sonar.login", "admin"
         property "sonar.password", "ADMIN"
-        property "sonar.projectKey", "rest-api"
-        property 'sonar.projectName', 'rest-api'
+        property "sonar.projectKey", "api_provider"
+        property 'sonar.projectName', 'api_provider'
         property 'sonar.java.source', 17
         property "sonar.sources", "src/main"
     }
@@ -59,16 +57,3 @@ sonar {
 
 tasks['sonarqube'].dependsOn jacocoTestReport
 
-pact {
-    publish {
-        // empty, but needs to be there
-    }
-    broker {
-        pactBrokerUrl = 'http://local-pact-broker/'
-    }
-    serviceProviders {
-        UserServiceJUnit5 {
-            // empty, but needs to be there
-        }
-    }
-}
