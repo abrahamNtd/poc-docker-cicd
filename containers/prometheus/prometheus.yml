@@ -1,0 +1,20 @@
+global:
+  scrape_interval: 30s
+  evaluation_interval: 15s
+  scrape_timeout: 10s
+
+rule_files:
+  - alert.yml
+
+scrape_configs:
+  - job_name: local-services
+    metrics_path: '/api_status/prometheus'
+    static_configs:
+      - targets:
+          - 'local-server:80'
+
+alerting:
+  alertmanagers:
+    - scheme: http
+      static_configs:
+        - targets: [ 'local-alertmanager:80' ] 

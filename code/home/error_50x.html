@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Local CI/CD environment</title>
+  <meta charset="utf-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font: 400 15px Lato, sans-serif;
+      line-height: 1.8;
+      color: #818181;
+    }
+    .navbar {
+      margin-bottom: 0;
+      background-color: #003399;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+    }
+      .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+    }
+    .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #003399 !important;
+      background-color: #fff !important;
+    }
+    .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+    }
+    .jumbotron {
+      background-color: #003399;
+      color: #ffffff;
+      padding: 100px 25px;
+    }
+    .main-container {
+      padding: 80px 120px;
+    }
+    .tool {
+      border: 10px solid transparent;
+      margin-bottom: 25px;
+      height: 100%;
+    }
+    .tool:hover {
+      border-color: #f1f1f1;
+    }
+    footer  {
+      background-color: #003399;
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://localhost:8080/index.html#about">CI/CD</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://localhost:8080/index.html#about">About</a></li>
+        <li><a href="http://localhost:8080/index.html#ci_cd">CI/CD</a></li>
+        <li><a href="http://localhost:8080/index.html#monitoring">Monitoring</a></li>
+        <li><a href="http://localhost:8080/index.html#servers">Servers</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="about" class="jumbotron text-center">
+  <h1>Sorry We Messed Up</h1><br>
+  <img src="http://localhost:8080/img/500.png" tool" alt="error 404 not found"><br>
+  <h3>
+    Did We Messed Up ?????<br>
+    Come on<br>
+    We don't know what are you talking about<br>
+    Please be serious<br>
+    :) ...<br>
+  </h3>
+</div>
+<footer class="container-fluid text-center">
+  <a href="http://localhost:8080/index.html#about" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>Local CI/CD environment</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,5 @@
+volumes
+.DS_Store
+temp
+code/api/app/build/
+code/api/.gradle

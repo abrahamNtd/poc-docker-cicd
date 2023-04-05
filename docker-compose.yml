@@ -1,0 +1,108 @@
+version: "3.7"
+services:
+  local-home:
+    container_name: local-server
+    image: abraham_ntd/local-server:latest
+    build:
+      context: .
+      dockerfile: containers/server/Dockerfile
+    ports:
+      - 8080:80
+      - 9090:22 
+  local-jenkins:
+    container_name: local-jenkins
+    image: abraham_ntd/local-jenkins:latest
+    build:
+      context: .
+      dockerfile: containers/jenkins/Dockerfile
+    environment:
+      JENKINS_ADMIN_ID: admin
+      JENKINS_ADMIN_PASSWORD: admin
+    ports:
+      - 8081:8080
+      - 9091:22
+      - 7091:50000
+  local-sonar:
+    container_name: local-sonar
+    image: abraham_ntd/local-sonar:latest
+    build:
+      context: .
+      dockerfile: containers/sonar/Dockerfile
+    depends_on:
+      - local-db
+    volumes:
+      - type: bind
+        source: ./volumes/sonarqube/data
+        target: /opt/sonarqube/data
+      - type: bind
+        source: ./volumes/sonarqube/extensions
+        target: /opt/sonarqube/extensions
+      - type: bind
+        source: ./volumes/sonarqube/logs
+        target: /opt/sonarqube/logs
+    ports:
+      - 8082:9000
+  init:
+      image: bash
+      privileged: true
+      user: root
+      volumes:
+        - ./containers/sonar/init.sh:/mnt/init.sh
+      command: ["sh", "-e", "/mnt/init.sh"]
+  local-pact-broker:
+    container_name: local-pact-broker
+    image: abraham_ntd/local-pact-broker:latest
+    build:
+      context: .
+      dockerfile: containers/pactbroker/Dockerfile
+    ports:
+      - 8083:80
+    depends_on:
+      - local-db
+    environment:
+      PACT_BROKER_DATABASE_USERNAME: root
+      PACT_BROKER_DATABASE_PASSWORD: admin
+      PACT_BROKER_DATABASE_HOST: local-db
+      PACT_BROKER_DATABASE_NAME: pactbrokerdb
+      PACT_BROKER_DATABASE_PORT: 5432
+  local-prometheus:
+    container_name: local-prometheus
+    image: abraham_ntd/local-prometheus:latest
+    build:
+      context: .
+      dockerfile: containers/prometheus/Dockerfile
+    ports:
+      - 8084:9090
+  local-alertmanager:
+    container_name: local-alertmanager
+    image: abraham_ntd/local-alertmanager:latest
+    build:
+      context: .
+      dockerfile: containers/alertmanager/Dockerfile
+    ports:
+      - 8085:9093
+  local-grafana:
+    container_name: local-grafana
+    image: abraham_ntd/local-grafana:latest
+    build:
+      context: .
+      dockerfile: containers/grafana/Dockerfile
+    ports:
+      - 8086:3000
+  local-db:
+    container_name: local-db
+    image: abraham_ntd/local-db:latest
+    build:
+      context: .
+      dockerfile: containers/postgres/Dockerfile
+    healthcheck:
+      test: psql postgres --command "select 1"
+    volumes:
+      - type: bind
+        source: ./volumes/postgresql/conf
+        target: /var/lib/postgresql
+      - type: bind
+        source: ./volumes/postgresql/data
+        target: /var/lib/postgresql/data
+    ports:
+      - 5432:5432
