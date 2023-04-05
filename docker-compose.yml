@@ -6,6 +6,10 @@ services:
     build:
       context: .
       dockerfile: containers/server/Dockerfile
+    volumes:
+      - type: bind
+        source: ./volumes/server/nginx/html/reports
+        target: /usr/share/nginx/html/reports/
     ports:
       - 8080:80
       - 9090:22 
