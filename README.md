@@ -38,8 +38,26 @@ ssh
 
 3 Running the project 
 
+After setting the environment, on the root directory of the project (Where the docker-compose file is located), you must run the following command to start the project :
+
+docker compose build
+
+docker compose up -d
+
+Now if everything was ok you should be able to see the homepage on your browser 
+
+http://localhost:8080/
+
+To stop the project you should run the following command:
+
+docker compose down --volumes
+
 4 First Time using the project
 
-4.5 Sonar
+4.1 Home
+
+4.2 Jenkins
+
+4.3 Sonar
 
 After login for the first time to sonar you should change your password from "admin" to "ADMIN" 
