@@ -9,10 +9,14 @@ function init_volumenes {
 	mkdir -p ./volumes/postgresql/conf
 	mkdir -p ./volumes/postgresql/data
 	mkdir -p ./volumes/jenkins/jenkins_home
+	mkdir -p ./volumes/jenkins/jenkins_home/.ssh
 	mkdir -p ./volumes/prometheus
 	mkdir -p ./volumes/prometheus/prometheus-data
 	mkdir -p ./volumes/grafana/provisioning/datasources
 	cp containers/jenkins/jenkins-configuration.yaml ./volumes/jenkins/jenkins_home/jenkins-configuration.yaml
+	cp ssh/id_rsa ./volumes/jenkins/jenkins_home/.ssh/id_rsa
+	cp ssh/id_rsa.pub ./volumes/jenkins/jenkins_home/.ssh/id_rsa.pub
+	cp ssh/config ./volumes/jenkins/jenkins_home/.ssh/config
 }
 
 function delete_old_volumenes {
