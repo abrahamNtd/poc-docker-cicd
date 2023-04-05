@@ -64,7 +64,7 @@ pipeline {
                         def origin = "Functional_Test_Report.html"
                         sh "scp -i /home/jenkins/.ssh/id_rsa -P 22 ${origin} sshuser@local-server:${dest}"
                         echo "Report http://localhost:8080/reports/${report_name}"
-                        sh 'ssh sshuser@local-server -p 22 -i /home/jenkins/.ssh/id_rsa python3 reports.py "api_reports.json" "Unit Test"' + ${report_name}
+                        sh 'ssh sshuser@local-server -p 22 -i /home/jenkins/.ssh/id_rsa python3 reports.py "api_reports.json" "Unit Test"' + report_name
                         echo "The web index for the test reports has been updated"
                     }catch (Exception e) {
                         echo "Something went wrong. ";
