@@ -16,7 +16,10 @@
       font: 400 15px Lato, sans-serif;
       line-height: 1.8;
       color: #818181;
+<<<<<<< HEAD
       background-color: #efefef;
+=======
+>>>>>>> main
     }
     .navbar {
       margin-bottom: 0;
@@ -28,7 +31,11 @@
       letter-spacing: 4px;
       border-radius: 0;
     }
+<<<<<<< HEAD
     .navbar li a, .navbar .navbar-brand {
+=======
+      .navbar li a, .navbar .navbar-brand {
+>>>>>>> main
       color: #fff !important;
     }
     .navbar-nav li a:hover, .navbar-nav li.active a {
@@ -43,11 +50,17 @@
       background-color: #003399; /* Orange */
       color: #ffffff;
       padding: 100px 25px;
+<<<<<<< HEAD
 
     }
     .content{
       margin-top: 25px;
       margin-bottom: 25px;
+=======
+    }
+    .main-container {
+      padding: 80px 120px;
+>>>>>>> main
     }
     .tool {
       border: 10px solid transparent;
@@ -63,12 +76,15 @@
       margin-bottom: 20px;
       color: #ffffff;
     }
+<<<<<<< HEAD
     .centered{
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100%;
     }
+=======
+>>>>>>> main
   </style>
 </head>
 <body>
@@ -86,9 +102,15 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#about">About</a></li>
+<<<<<<< HEAD
         <li><a href="#servers">Servers</a></li>
         <li><a href="#ci_cd">CI/CD</a></li>
         <li><a href="#monitoring">Monitoring</a></li>
+=======
+        <li><a href="#ci_cd">CI/CD</a></li>
+        <li><a href="#monitoring">Monitoring</a></li>
+        <li><a href="#servers">Servers</a></li>
+>>>>>>> main
       </ul>
     </div>
   </div>
@@ -96,6 +118,7 @@
 
 <div id="about" class="jumbotron text-center">
   <h1>Local CI/CD environment</h1>
+<<<<<<< HEAD
   <div class="centered">
     <img src="img/devops.png" class="img-responsive" alt="Pact Broker">
   </div>
@@ -375,6 +398,167 @@
       </div>
     </div>
   </div>
+=======
+  <img src="img/devops.png" tool" alt="Pact Broker">
+  <h3>This is the home for the Local <em>CI/CD</em> environment which contains the following services and tools running locally using Docker and Docker Compose.</h3>
+</div>
+
+<div id="ci_cd" class="main-container text-center">
+	<h2><strong>CI/CD</strong></h2><br><br>
+	<p>bla bla bla.</p><br>
+	<div class="row">
+		<div class="col-sm-4">
+			<p><strong>CI/CD Server</strong></p><br>
+      <p>
+        <a href="http://localhost:8081/" target="_blank">
+          <img src="img/jenkins.png" class="img-circle tool" alt="Jenkins">
+        </a>
+      </p>
+			<a href="#ci_cd_01" data-toggle="collapse">
+        Details
+      </a>
+      <div id="ci_cd_01" class="collapse">
+        <p>Jenkins server</p>
+        <p>"http://localhost:8081/"</p>
+      </div>
+		</div>
+		<div class="col-sm-4">
+			<p><strong>Static Code Analisys</strong></p><br>
+      <p>
+        <a href="http://localhost:8082/" target="_blank">
+          <img src="img/sonar.png" class="tool" alt="SonarQube">
+        </a>
+      </p>
+			<a href="#ci_cd_02" data-toggle="collapse">
+        Details
+      </a>
+      <div id="ci_cd_02" class="collapse">
+        <p>SonarQube</p>
+        <p>"http://localhost:8082/"</p>
+      </div>
+		</div>
+		<div class="col-sm-4">
+			<p><strong>Contarcts</strong></p><br>
+      <p>
+        <a href="http://localhost:8083/" target="_blank">
+          <img src="img/pactbroker.png" class="tool" alt="Pact Broker"></a></p>
+			<a href="#ci_cd_03" data-toggle="collapse">
+        Details
+      </a>
+      <div id="ci_cd_03" class="collapse">
+        <p>Pact Broker</p>
+        <p>"http://localhost:8083/"</p>
+      </div>
+		</div>
+	</div>
+</div>
+
+<div id="monitoring" class="main-container text-center">
+	<h2><strong>Monitoring</strong></h2><br><br>
+	<p>bla bla bla.</p><br>
+	<div class="row">
+		<div class="col-sm-4">
+			<p><strong>Monitoring</strong></p><br>
+      <p>
+        <a href="http://localhost:8084/" target="_blank">
+          <img src="img/prometheus.png" class="img-circle tool" alt="Prometheus">
+        </a>
+      </p>
+			<a href="#monitoring_01" data-toggle="collapse">
+        Details
+      </a>
+      <div id="monitoring_01" class="collapse">
+        <p>Prometheus</p>
+        <p>"http://localhost:8084/"</p>
+      </div>
+		</div>
+		<div class="col-sm-4">
+			<p><strong>Alerting Manager</strong></p><br>
+      <p>
+        <a href="http://localhost:8085/" target="_blank">
+          <img src="img/alertmanager.png" class="img-circle tool" alt="Alertmanager">
+        </a>
+      </p>
+			<a href="#monitoring_02" data-toggle="collapse">
+        Details
+      </a>
+      <div id="monitoring_02" class="collapse">
+        <p>Alertmanager</p>
+        <p>"http://localhost:8085/"</p>
+      </div>
+		</div>
+		<div class="col-sm-4">
+			<p><strong>Dashboards</strong></p><br>
+      <p>
+        <a href="http://localhost:8086/dashboards" target="_blank">
+          <img src="img/grafana.png" class="img-circle tool" alt="Grafana">
+        </a>
+      </p>
+			<a href="#monitoring_03" data-toggle="collapse">
+        Details
+      </a>
+      <div id="monitoring_03" class="collapse">
+        <p>Grafana</p>
+        <p>"http://localhost:8086/dashboards"</p>
+      </div>
+		</div>
+	</div>
+</div>
+
+<div id="servers" class="main-container text-center">
+	<h2><strong>Servers</strong></h2><br><br>
+	<p>bla bla bla.</p><br>
+	<div class="row">
+		<div class="col-sm-4">
+			<p><strong>Backend</strong></p><br>
+      <p>
+        <a href="http://localhost:8080/api/" target="_blank">
+          <img src="img/tomcat.png" class="tool" alt="Tomcat 9 Server">
+        </a>
+      </p>
+			<a href="#server_01" data-toggle="collapse">
+        Details
+      </a>
+      <div id="server_01" class="collapse">
+        <p>Tomcat 9 Server</p>
+        <p>Rest Api</p>
+        <p>http://localhost:8080/api/</p>
+      </div>
+		</div>
+    <div class="col-sm-4">
+      <p><strong>Backend status</strong></p><br>
+      <p>
+        <a href="http://localhost:8080/api_status/" target="_blank">
+          <img src="img/tomcat.png" class="tool" alt="Tomcat 9 Server">
+        </a>
+      </p>
+      <a href="#server_01" data-toggle="collapse">
+        Details
+      </a>
+      <div id="server_01" class="collapse">
+        <p>Tomcat 9 Server</p>
+        <p>Rest Api</p>
+        <p>http://localhost:8080/api_status/</p>
+      </div>
+    </div>
+		<div class="col-sm-4">
+			<p><strong>Forntend</strong></p><br>
+      <p>
+        <a href="http://localhost:8080/web/" target="_blank">
+          <img src="img/nginx.png" class="img-circle tool" alt="Nginext Server">
+        </a>
+      </p>
+			<a href="#server_02" data-toggle="collapse">
+        Details
+      </a>
+      <div id="server_02" class="collapse">
+        <p>Nginx Server</p>
+        <p>Single Page Aplication</p>
+        "http://localhost:8080/web/"
+      </div>
+		</div>
+	</div>
+>>>>>>> main
 </div>
 <footer class="container-fluid text-center">
   <a href="#about" title="To Top">

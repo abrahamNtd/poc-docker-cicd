@@ -57,4 +57,3 @@ sonar {
 }
 
 tasks['sonarqube'].dependsOn jacocoTestReport
-
