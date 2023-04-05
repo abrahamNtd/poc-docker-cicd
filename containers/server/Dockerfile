@@ -25,6 +25,7 @@ COPY ssh/config /home/sshuser/.ssh/config
 COPY containers/server/nginx.conf /etc/nginx/nginx.conf
 COPY containers/server/start.sh /home/sshuser/start.sh
 COPY containers/server/stop.sh /home/sshuser/stop.sh
+COPY containers/server/api_reports.json /usr/share/nginx/html/reports/api_reports.json
 
 COPY code/home/index.html /usr/share/nginx/html/index.html
 COPY code/home/error_404.html /usr/share/nginx/html/error_404.html
