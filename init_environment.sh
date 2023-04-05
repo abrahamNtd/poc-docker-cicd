@@ -12,6 +12,7 @@ function init_volumenes {
 	mkdir -p ./volumes/prometheus
 	mkdir -p ./volumes/prometheus/prometheus-data
 	mkdir -p ./volumes/grafana/provisioning/datasources
+	cp containers/jenkins/jenkins-configuration.yaml ./volumes/jenkins/jenkins_home/jenkins-configuration.yaml
 }
 
 function delete_old_volumenes {
