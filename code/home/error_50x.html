@@ -16,6 +16,7 @@
       font: 400 15px Lato, sans-serif;
       line-height: 1.8;
       color: #818181;
+      background-color: #efefef;
     }
     .navbar {
       margin-bottom: 0;
@@ -60,6 +61,12 @@
       margin-bottom: 20px;
       color: #ffffff;
     }
+    .centered{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
   </style>
 </head>
 <body>
@@ -87,7 +94,9 @@
 
 <div id="about" class="jumbotron text-center">
   <h1>Sorry We Messed Up</h1><br>
-  <img src="http://localhost:8080/img/500.png" tool" alt="error 404 not found"><br>
+  <div class="centered">
+    <img src="http://localhost:8080/img/500.png" class="img-responsive" alt="error 50x internal server error"><br>
+  </div>
   <h3>
     Did We Messed Up ?????<br>
     Come on<br>
