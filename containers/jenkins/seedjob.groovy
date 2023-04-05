@@ -10,7 +10,7 @@ pipelineJob('backend_pipeline') {
       scm {
         git {
           remote { url('https://github.com/abrahamNtd/poc-docker-cicd.git') } 
-          branches('origin/feature/basic-setup') 
+          branches('main') 
           scriptPath('code/api/ci/Jenkinsfile') 
           extensions { }
         } 

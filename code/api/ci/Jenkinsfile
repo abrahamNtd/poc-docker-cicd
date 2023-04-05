@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'feature/basic-setup', changelog: false, poll: false, url: 'https://github.com/abrahamNtd/poc-docker-cicd.git'
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/abrahamNtd/poc-docker-cicd.git'
             }
         }
         stage('Unit Test') {
