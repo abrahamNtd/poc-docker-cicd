@@ -63,11 +63,9 @@
       margin-bottom: 20px;
       color: #ffffff;
     }
-    .centered{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
+    .logo {
+      color: #ffffff;
+      font-size: 200px;
     }
   </style>
 </head>
@@ -94,11 +92,78 @@
   </div>
 </nav>
 
-<h1>Local Web Server</h1>
-<p>This is the local Web Server base on Nginx and docker</p>
-<br><br>
-Web Server up and running
-<br><br>
+<div id="about" class="jumbotron text-center">
+  <h1>Test Reports</h1><br>
+  <span class="glyphicon glyphicon glyphicon-folder-open logo"></span>
+  <span class="logo">&nbsp;</span>
+  <span class="glyphicon glyphicon glyphicon-list-alt logo"></span>
+</div>
+
+<div id="servers" class="panel content">
+  <div class="panel-heading content text-center">
+    <h2>Rest API (Backend)</h2>
+  </div>
+  <div class="panel-body content table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Unit Test</th>
+          <th>Functional Test</th>
+          <th>Performance Test</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <a href="http://localhost:8080/reposts/" target="_blank">
+                
+            </a>
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div id="servers" class="panel content text-center">
+  <div class="panel-heading content">
+    <h2>Webpage (Forntend)</h2>
+  </div>
+  <div class="panel-body content table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Unit Test</th>
+          <th>Functional Test</th>
+          <th>Performance Test</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <a href="http://localhost:8080/reposts/" target="_blank">
+                
+            </a>
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <footer class="container-fluid text-center">
   <a href="#about" title="To Top">

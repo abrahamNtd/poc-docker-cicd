@@ -17,7 +17,7 @@ RUN echo 'sshuser:pass' | chpasswd
 
 RUN mkdir /home/sshuser/.ssh
 RUN mkdir /usr/share/nginx/html/web
-RUN mkdir /usr/share/nginx/html/test_reports
+RUN mkdir /usr/share/nginx/html/reports
 
 COPY ssh/id_rsa.pub /home/sshuser/.ssh/authorized_keys
 COPY ssh/config /home/sshuser/.ssh/config
@@ -32,6 +32,8 @@ COPY code/home/error_50x.html /usr/share/nginx/html/error_50x.html
 COPY code/home/img/  /usr/share/nginx/html/img/
 
 COPY code/web/index.html /usr/share/nginx/html/web/index.html
+
+COPY code/reports/index.html /usr/share/nginx/html/reports/index.html
 
 RUN chown -R sshuser:sshgroup /usr/share/nginx/html
 RUN chown -R sshuser:sshgroup /home/sshuser/

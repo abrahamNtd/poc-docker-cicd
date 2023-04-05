@@ -60,10 +60,10 @@ pipeline {
                 script {
                     try{
                         def report_name = new Date().format("yyyyMMdd.HHmm", TimeZone.getTimeZone('UTC')) + '.html'
-                        def dest = "/usr/share/nginx/html/test_reports/" + report_name
+                        def dest = "/usr/share/nginx/html/reports/" + report_name
                         def origin = "Functional_Test_Report.html"
                         sh "scp -i /home/jenkins/.ssh/id_rsa -P 22 ${origin} sshuser@local-server:${dest}"
-                        echo "Report http://localhost:8080/test_reports/${report_name}"
+                        echo "Report http://localhost:8080/reports/${report_name}"
                     }catch (Exception e) {
                         echo "Something went wrong. ";
                     }
