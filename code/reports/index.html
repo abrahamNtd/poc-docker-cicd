@@ -28,7 +28,7 @@
       letter-spacing: 4px;
       border-radius: 0;
     }
-      .navbar li a, .navbar .navbar-brand {
+    .navbar li a, .navbar .navbar-brand {
       color: #fff !important;
     }
     .navbar-nav li a:hover, .navbar-nav li.active a {
@@ -40,12 +40,14 @@
       color: #fff !important;
     }
     .jumbotron {
-      background-color: #003399;
+      background-color: #003399; /* Orange */
       color: #ffffff;
       padding: 100px 25px;
+
     }
-    .main-container {
-      padding: 80px 120px;
+    .content{
+      margin-top: 25px;
+      margin-bottom: 25px;
     }
     .tool {
       border: 10px solid transparent;
@@ -61,11 +63,9 @@
       margin-bottom: 20px;
       color: #ffffff;
     }
-    .centered{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
+    .logo {
+      color: #ffffff;
+      font-size: 200px;
     }
   </style>
 </head>
@@ -83,33 +83,89 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://localhost:8080/index.html#about">About</a></li>
-        <li><a href="http://localhost:8080/index.html#servers">Local Environment (Apps)</a></li>
-        <li><a href="http://localhost:8080/index.html#ci_cd">Tools CI/CD</a></li>
-        <li><a href="http://localhost:8080/index.html#monitoring">Monitoring and Logs (Servers)</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#backend">Rest API </a></li>
+        <li><a href="#forntend">Webpage</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <div id="about" class="jumbotron text-center">
-  <h1>Sorry We Messed Up</h1><br>
-  <div class="centered">
-    <img src="http://localhost:8080/img/500.png" class="img-responsive" alt="error 50x internal server error"><br>
-  </div>
-  <h3>
-    Did We Messed Up ?????<br>
-    Come on<br>
-    We don't know what are you talking about<br>
-    Please be serious<br>
-    :) ...<br>
-  </h3>
+  <h1>Test Reports</h1><br>
+  <span class="glyphicon glyphicon glyphicon-folder-open logo"></span>
+  <span class="logo">&nbsp;</span>
+  <span class="glyphicon glyphicon glyphicon-list-alt logo"></span>
 </div>
+
+<div id="backend" class="panel content">
+  <div class="panel-heading content text-center">
+    <h2>Rest API (Backend)</h2>
+  </div>
+  <div class="panel-body content table-responsive">
+    <table id="api_reports" class="table table-hover">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Url</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<div id="forntend" class="panel content">
+  <div class="panel-heading content text-center">
+    <h2>Webpage (Forntend)</h2>
+  </div>
+  <div class="panel-body content table-responsive">
+    <table id="web_reports" class="table table-hover">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Url</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
 <footer class="container-fluid text-center">
-  <a href="http://localhost:8080/index.html#about" title="To Top">
+  <a href="#about" title="To Top">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a>
   <p>Local CI/CD environment</a></p>
 </footer>
+
+<script>
+  function convert(jsonData, table) {
+    jsonData.forEach((item) => {
+      let tr = document.createElement("tr");
+
+      let td = document.createElement("td");
+      td.innerText = item.type;
+      tr.appendChild(td);
+
+      td = document.createElement("td");
+      let newlink = document.createElement('a');
+      newlink.innerText = item.name;
+      newlink.href = "http://localhost:8080/reports/" + item.name;
+      td.appendChild(newlink);
+      tr.appendChild(td);
+      table.appendChild(tr); 
+    });
+  }
+  fetch("./api_reports.json")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    let table = document.getElementById("api_reports");
+    convert(data,table);
+  })
+</script>
+
 </body>
 </html>
